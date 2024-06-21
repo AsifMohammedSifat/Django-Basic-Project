@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>From Database</h1>
+    {% if objects %}
+        <ol>
+            {% for object in objects %}
+                <li><a href="{{object.id}}">Title is {{object.title}} - Id is {{object.id}}</a></li>       
+            {% endfor %}
+        </ol>
+    {% else %}
+
+        {% if object %}
+            <ol>
+                <li>Title is {{objects.title}} - Id is {{objects.id}}</li>           
+            </ol>            
+        {% endif %}
+        
+    {% endif %}
+
+{% endblock content %}

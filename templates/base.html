@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block title %}Global{% endblock title %}</title>
+    
 </head>
 <body>
 
@@ -12,15 +13,16 @@
         <li><a href="{%url 'in_app_templates' %}">In App Templates</a></li>
         <li><a href="{%url 'in_project_templates' %}">In Project Templates</a></li>
         <li><a href="{%url 'global_templates' %}">Global Templates</a></li>
+        <li><a href="{%url 'article_objects' %}">All Article Objects</a></li>
     </ol>
    
     {% block content %}   
     
     {% endblock content %}
 
-    {% block base_only %}
+    {% comment %} {% block base_only %}
     <h1>I am Global template</h1>
-    {% endblock %}
+    {% endblock %} {% endcomment %}
 
 </body>
 </html>
