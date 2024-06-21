@@ -1,0 +1,18 @@
+===========================
+Create Virtual Environment
+===========================
+
+install:	pip install virtualenv
+
+check version:  virtualenv --version
+
+create virtual env folder: python -m venv <folder_name> or dot->(.) (for create in same folder)
+
+activate virtual env: Scripts\activate.bat or source Scripts\activate
+
+deactivate virtual env: deactivate
+
+
+Available command in python for django management command: python -m django or django-admin
+
+All installed apps list in env: pip freeze>requirements.txt
