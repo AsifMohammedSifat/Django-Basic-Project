@@ -16,3 +16,6 @@ deactivate virtual env: deactivate
 Available command in python for django management command: python -m django or django-admin
 
 All installed apps list in env: pip freeze>requirements.txt
+
+
+For git pull issue: git pull origin main --allow-unrelated-histories
