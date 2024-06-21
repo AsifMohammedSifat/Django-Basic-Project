@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <form action="">
+        <input type="text" name="q">
+        <input type="submit">
+    </form>
+
+    {% if object %}
+            <ol>
+                <li>Title is {{object.title}} - Id is {{object.id}}</li>           
+            </ol>
+    {% else %}
+            <ol>
+                <li>No result found</li>           
+            </ol>            
+    {% endif %}
+    <button style="margin-top:10px;"><a href="http://127.0.0.1:8000/article/search/" style="text-decoration:none;">Go Back</a></button>
+{% endblock content %}
+

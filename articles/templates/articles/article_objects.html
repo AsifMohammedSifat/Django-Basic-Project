@@ -12,10 +12,16 @@
 
         {% if object %}
             <ol>
-                <li>Title is {{objects.title}} - Id is {{objects.id}}</li>           
-            </ol>            
+                <li>Title is {{object.title}} - Id is {{object.id}}</li>           
+            </ol>
+        {% else %}
+            <ol>
+                <li>No result found</li>           
+            </ol>
         {% endif %}
         
     {% endif %}
+
+    <button><a href="http://127.0.0.1:8000/article/search/" style="text-decoration:none;">Go Back</a></button>
 
 {% endblock content %}
