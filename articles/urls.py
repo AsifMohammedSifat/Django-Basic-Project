@@ -3,5 +3,5 @@ from django.urls import path
 from .views import in_app
 
 urlpatterns = [
-    path('',in_app),
+    path('',in_app,name="in_app_templates"),
 ]

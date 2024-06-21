@@ -6,13 +6,21 @@
     <title>Document</title>
 </head>
 <body>
-    {% block base_only %}
-    <h1>I am Global template</h1>
-    {% endblock %}
+
+
+    <ol>
+        <li><a href="{%url 'in_app_templates' %}">In App Templates</a></li>
+        <li><a href="{%url 'in_project_templates' %}">In Project Templates</a></li>
+        <li><a href="{%url 'global_templates' %}">Global Templates</a></li>
+    </ol>
    
     {% block content %}   
     
     {% endblock content %}
+
+    {% block base_only %}
+    <h1>I am Global template</h1>
+    {% endblock %}
 
 </body>
 </html>

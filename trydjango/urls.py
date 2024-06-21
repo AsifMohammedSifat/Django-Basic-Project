@@ -16,12 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from .views import home,global_template,inProject_template
+from .views import home,global_template,inProject_template,htmlString
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
-    path("global/",global_template),
-    path("in_project/",inProject_template),
+    path('htmlString/', htmlString),
+    path("global/",global_template,name="global_templates"),
+    path("in_project/",inProject_template,name="in_project_templates"),
     path("article/",include("articles.urls")),
 ]
