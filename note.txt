@@ -19,3 +19,11 @@ All installed apps list in env: pip freeze>requirements.txt
 
 
 For git pull issue: git pull origin main --allow-unrelated-histories
+
+
+====================================================
+
+Diffrent way to create app:
+1) python -m django  startapp test2
+2) django-admin startapp articles
+3) python manage.py startapp test1
