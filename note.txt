@@ -27,3 +27,31 @@ Diffrent way to create app:
 1) python -m django  startapp test2
 2) django-admin startapp articles
 3) python manage.py startapp test1
+
+
+=================Create object usig shell===========================
+$ python manage.py shell
+Python 3.11.5 (tags/v3.11.5:cce6ba9, Aug 24 2023, 14:38:34) [MSC v.1936 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from articles.models import article
+>>> article
+<class 'articles.models.article'>
+>>> article.objects.create("title":"fruits","content":"mango")
+  File "<console>", line 1
+    article.objects.create("title":"fruits","content":"mango")
+                                  ^
+SyntaxError: invalid syntax
+>>> article.objects.create("title"="fruits","content"="mango") 
+  File "<console>", line 1
+    article.objects.create("title"="fruits","content"="mango")
+                           ^^^^^^^^
+SyntaxError: expression cannot contain assignment, perhaps you meant "=="?
+>>> article.objects.create(title="fruits",content="mango")     
+<article: article object (1)>
+>>> article.objects.create(title="audi",content="yamaha")   
+<article: article object (2)>
+>>> article.objects.create(title="tech",content="google") 
+<article: article object (3)>
+>>> article.objects.all()                                
+<QuerySet [<article: article object (1)>, <article: article object (2)>, <article: article object (3)>]>
