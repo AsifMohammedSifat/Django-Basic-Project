@@ -5,3 +5,6 @@ from django.db import models
 class article(models.Model):
     title = models.TextField()
     content = models.TextField()
+
+    class Meta:
+        ordering = ['id']
