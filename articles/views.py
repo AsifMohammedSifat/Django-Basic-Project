@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from .models import article
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -17,6 +18,24 @@ def show_objects(request,id=None):
         objects = article.objects.all()     
         context['objects'] = objects
     return render(request,"articles/article_objects.html",context)
+
+
+# @csrf_exempt # from django.views.decorators.csrf import csrf_exempt 
+def article_create(request):
+    print(request.POST)
+    # print(request.POST.get('title'))
+    context = {}
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        # print(title,content)
+        article_object = article.objects.create(title = title,content=content)
+        context['object'] = article_object
+        # context['title'] = title
+        # context['content'] = content
+        context['isCreated'] = True
+
+    return render(request,"articles/article_create.html",context=context)
 
 
 def search_article(request,*args, **kwargs):

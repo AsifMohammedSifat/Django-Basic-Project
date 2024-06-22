@@ -81,6 +81,16 @@ class article(models.Model):
 
 
 
-        
+====================Form sunmission  CSRF Form========================
+
+for csrf form submit validation we can use decorators in views: 
+@csrf_exempt # from django.views.decorators.csrf import csrf_exempt 
+def article_create(request):
+    context = {}
+    return render(request,"articles/article_create.html",context)
+but this is risky.so it is not recommanded.
+
+we will use: {% csrf_token %}
+
 
 
