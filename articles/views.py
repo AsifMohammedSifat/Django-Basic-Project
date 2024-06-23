@@ -2,13 +2,14 @@ from django.shortcuts import render,get_object_or_404
 from .models import article
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 def in_app(request):
     return render(request,"articles/article_detail.html")
 
-
+@login_required
 def show_objects(request,id=None):
     context = {}
     if id is not None:

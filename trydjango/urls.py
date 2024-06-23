@@ -25,4 +25,5 @@ urlpatterns = [
     path("global/",global_template,name="global_templates"),
     path("in_project/",inProject_template,name="in_project_templates"),
     path("article/",include("articles.urls")),
+    path("accounts/",include("accounts.urls")),
 ]
