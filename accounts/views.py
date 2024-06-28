@@ -19,7 +19,10 @@ def login_view(request):
     return render(request,"login.html")
 
 def logout_view(request):
-    return render(request,"register.html")
+    if request.method=="POST":
+        logout(request)
+        return redirect('login')
+    return render(request,"logout.html")
 
 def register_view(request):
     return render(request,"logout.html")
