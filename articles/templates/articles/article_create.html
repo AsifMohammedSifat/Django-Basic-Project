@@ -1,20 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
+
+
 {% if isCreated %}
     <a href="/article/objects/{{object.id}}">Title is {{object.title}} - Id is {{object.id}}</a>
 {% else %}
     <div style="width: 500px;">
         <form action="" method="POST">
             {% csrf_token %}
-            <div>
+            {% comment %} <div>
                 <input type="text" name="title" placeholder="Title">
             </div>
         
             <div style="margin-top:20px;">
                 <textarea name="content" placeholder="content"></textarea>
-            </div>
-        
+            </div> {% endcomment %}
+            {{form.as_p}}
             <button type="submit">Create Article</button>
         
         </form>

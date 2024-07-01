@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
+from .forms import ArticleForm
 # Create your views here.
 
 def in_app(request):
@@ -23,18 +24,29 @@ def show_objects(request,id=None):
 
 # @csrf_exempt # from django.views.decorators.csrf import csrf_exempt 
 def article_create(request):
-    print(request.POST)
+    # print(request.POST)
     # print(request.POST.get('title'))
-    context = {}
+
+    form = ArticleForm()
+    # print(dir(form))
+    context = {
+        "form":form
+    }
+
     if request.method == "POST":
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        # print(title,content)
-        article_object = article.objects.create(title = title,content=content)
-        context['object'] = article_object
-        # context['title'] = title
-        # context['content'] = content
-        context['isCreated'] = True
+        form = ArticleForm(request.POST)
+        context['form'] = form
+        if form.is_valid():
+            title = form.cleaned_data.get('title')
+            content = form.cleaned_data.get('content')
+            # title = request.POST.get('title')
+            # content = request.POST.get('content')
+            # print(title,content)
+            article_object = article.objects.create(title = title,content=content)
+            context['object'] = article_object
+            # context['title'] = title
+            # context['content'] = content
+            context['isCreated'] = True
 
     return render(request,"articles/article_create.html",context=context)
 
