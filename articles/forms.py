@@ -1,6 +1,21 @@
 from django import forms
+from .models import article
 
-class ArticleForm(forms.Form):
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = article
+        fields = ['title','content']
+
+    def clean(self):
+        data = self.cleaned_data
+        title = data.get('title')
+        qs = article.objects.all().filter(title__icontains=title)
+        if qs.exists():
+            self.add_error("title",f"This title \"{title}\" already taken")
+        return data
+
+
+class ArticleFormOld(forms.Form):
     title = forms.CharField(max_length=50)
     content = forms.CharField(max_length=100)
 

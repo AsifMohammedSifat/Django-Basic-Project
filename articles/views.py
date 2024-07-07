@@ -37,16 +37,18 @@ def article_create(request):
         form = ArticleForm(request.POST)
         context['form'] = form
         if form.is_valid():
-            title = form.cleaned_data.get('title')
-            content = form.cleaned_data.get('content')
-            # title = request.POST.get('title')
-            # content = request.POST.get('content')
-            # print(title,content)
-            article_object = article.objects.create(title = title,content=content)
-            context['object'] = article_object
+            article_object = form.save()
+            context['form'] = ArticleForm() #remove data after submission
+            # title = form.cleaned_data.get('title')
+            # content = form.cleaned_data.get('content')
+            # # title = request.POST.get('title')
+            # # content = request.POST.get('content')
+            # # print(title,content)
+            # article_object = article.objects.create(title = title,content=content)
+            # context['object'] = article_object
             # context['title'] = title
             # context['content'] = content
-            context['isCreated'] = True
+            # context['isCreated'] = True
 
     return render(request,"articles/article_create.html",context=context)
 
